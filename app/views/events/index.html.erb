@@ -1,65 +1,70 @@
-<h1> Wyjazdy </h1>
-<table width="1000">
-  <tr>
-    <th>
-      <div align=left>
-      <%= "Nazwa" %>
-    </div>
-    </th>
-    <th>
-      <div align=left>
-      <%= "Data startu" %>
-    </div>
-    </th>
-    <th>
-      <div align=left>
-      <%= "Data zakończenia" %>
-    </div>
-    </th>
-    <th>
-      <div align=left>
-      <%= "Miejsce" %>
-    </div>
-    </th>
-    <th>
-      <div align=left>
-      <%= "Kraj" %>
-    </div>
-    </th>
-    <th>
-      <div align=left>
-      <%= "Cena PLN" %>
-      <div>
-    </th>
-    <th>
-      <div align=left>
-      <%= "Liczba miejsc" %>
-    </div>
-    </th>
-  </tr>
-  <% @events.each do |event| %>
-  <tr>
-    <td>
-      <%= event.name %>
-    </td>
-    <td>
-      <%= event.start_date.strftime("%d-%m-%Y") %>
-    </td>
-    <td>
-      <%= event.end_date.strftime("%d-%m-%Y") %>
-    </td>
-    <td>
-      <%= event.location %>
-    </td>
-    <td>
-      <%= event.country %>
-    </td>
-    <td>
-      <%= event.price %>
-    </td>
-    <td>
-      <%= event.capacity %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+<h1 class="text-center text-uppercase"> Wyjazdy </h1>
+
+<% if @events.any? %>
+  <table class="table">
+    <tr>
+      <th>
+        <div align=left>
+        <%= "Nazwa" %>
+      </div>
+      </th>
+      <th>
+        <div align=left>
+          <%= "Data startu" %>
+        </div>
+      </th>
+      <th>
+        <div align=left>
+        <%= "Data zakończenia" %>
+      </div>
+      </th>
+      <th>
+        <div align=left>
+        <%= "Miejsce" %>
+      </div>
+      </th>
+      <th>
+        <div align=left>
+        <%= "Kraj" %>
+      </div>
+      </th>
+      <th>
+        <div align=left>
+        <%= "Cena PLN" %>
+        <div>
+      </th>
+      <th>
+        <div align=left>
+        <%= "Liczba miejsc" %>
+      </div>
+      </th>
+    </tr>
+    <% @events.each do |event| %>
+    <tr>
+      <td>
+        <%= event.name %>
+      </td>
+      <td>
+        <%= event.start_date.strftime("%d-%m-%Y") %>
+      </td>
+      <td>
+        <%= event.end_date.strftime("%d-%m-%Y") %>
+      </td>
+      <td>
+        <%= event.location %>
+      </td>
+      <td>
+        <%= event.country %>
+      </td>
+      <td>
+        <%= event.price %>
+      </td>
+      <td>
+        <%= event.capacity %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h3 class="text-center"> Brak dostępnych wycieczek </h3>
+<% end %>
