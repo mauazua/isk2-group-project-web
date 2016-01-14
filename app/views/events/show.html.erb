@@ -1,0 +1,22 @@
+<p id="notice"> <%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+    <%= @event.name %>
+</p> 
+<p>
+  <strong>Price:</strong>
+    <%= @event.price %>
+</p>
+<p>
+  <%= link_to 'participe' , event_bookings_path(event_id: @event.id), :method => :post %>
+  <%= link_to 'unparticipe' , event_booking_path(event_id: @event.id), :method => :delete %>
+</p>
+</p>
+<table>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.email %></td>
+  </tr>
+<% end %>
+</table>

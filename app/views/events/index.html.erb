@@ -4,64 +4,60 @@
   <table class="table">
     <tr>
       <th>
-        <div align=left>
         <%= "Nazwa" %>
-      </div>
       </th>
       <th>
-        <div align=left>
-          <%= "Data startu" %>
-        </div>
+        <%= "Data startu" %>
       </th>
       <th>
-        <div align=left>
         <%= "Data zakończenia" %>
-      </div>
       </th>
       <th>
-        <div align=left>
         <%= "Miejsce" %>
-      </div>
       </th>
       <th>
-        <div align=left>
         <%= "Kraj" %>
-      </div>
       </th>
       <th>
-        <div align=left>
         <%= "Cena PLN" %>
-        <div>
       </th>
       <th>
-        <div align=left>
         <%= "Liczba miejsc" %>
-      </div>
       </th>
     </tr>
     <% @events.each do |event| %>
-    <tr>
-      <td>
-        <%= event.name %>
-      </td>
-      <td>
-        <%= event.start_date.strftime("%d-%m-%Y") %>
-      </td>
-      <td>
-        <%= event.end_date.strftime("%d-%m-%Y") %>
-      </td>
-      <td>
-        <%= event.location %>
-      </td>
-      <td>
-        <%= event.country %>
-      </td>
-      <td>
-        <%= event.price %>
-      </td>
-      <td>
-        <%= event.capacity %>
-      </td>
+      <tr>
+        <td>
+          <%= event.name %>
+        </td>
+        <td>
+          <%= event.start_date.strftime("%d-%m-%Y") %>
+        </td>
+        <td>
+          <%= event.end_date.strftime("%d-%m-%Y") %>
+        </td>
+        <td>
+          <%= event.location %>
+        </td>
+        <td>
+          <%= event.country %>
+        </td>
+        <td>
+          <%= event.price %>
+        </td>
+        <td>
+          <%= event.capacity %>
+        </td>
+      <% bookings = event_bookings(event.id) %>
+      <% if bookings.any? %>
+        <td>
+          <%= link_to 'wypisz się', event_booking_path(event_id: event.id, id: bookings.last.id), :method => :delete %>
+        </td>
+      <% else %>
+        <td>
+          <%= link_to 'zapisz się', event_bookings_path(event_id: event.id), :method => :post %>
+        </td>
+      <% end %>
     </tr>
     <% end %>
   </table>

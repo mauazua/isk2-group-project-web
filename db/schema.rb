@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 20151219233314) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
+  create_table "bookings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "name"
     t.datetime "start_date"
