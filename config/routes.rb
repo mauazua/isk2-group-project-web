@@ -11,6 +11,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :events
+    resources :bookings
   end
 end
-
