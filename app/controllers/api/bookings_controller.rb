@@ -12,6 +12,17 @@ class Api::BookingsController < BaseApiController
     render json: @user_data
   end
 
+  def destroy
+    @booking = Booking.find_by(id: params[:id])
+
+    if @booking.present?
+    @booking.destroy
+    render json:  "Deleted"
+    else
+      render json: "Booking not found"
+    end
+  end
+
   protected
 
   def set_event

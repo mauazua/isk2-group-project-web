@@ -17,3 +17,11 @@
 /tmp
 
 **/.DS_Store
+.idea/.rakeTasks
+.idea/encodings.xml
+.idea/isk2.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/w
+.idea/workspace.xml
+config/database.yml
