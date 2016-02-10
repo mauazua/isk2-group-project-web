@@ -1,16 +1,17 @@
 class Api::BookingsController < BaseApiController
   before_action :set_event
 
-  def index
-    if params[:event_id]
-      @bookings = Booking.where(event_id: @event.id).all
-    else
-      @bookings = Booking.all
+    def index
+      if params[:event_id]
+        @bookings = Booking.where(event_id: @event.id).all
+      else
+        @bookings = Booking.all
+      end
+
+      @user_data = @bookings.as_json(include: :user)
+      render json: @user_data
     end
 
-    @user_data = @bookings.as_json(include: :user)
-    render json: @user_data
-  end
 
   def destroy
     @booking = Booking.find_by(id: params[:id])
