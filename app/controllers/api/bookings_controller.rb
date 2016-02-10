@@ -8,8 +8,9 @@ class Api::BookingsController < BaseApiController
         @bookings = Booking.all
       end
 
-      @user_data = @bookings.as_json(include: :user)
-      render json: @user_data
+
+      @user_event_data = @bookings.as_json(:include =>[:event, :user])
+      render json: @user_event_data
     end
 
 
