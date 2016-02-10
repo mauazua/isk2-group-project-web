@@ -9,6 +9,9 @@ default: &default
   encoding: unicode
   pool: 5
   timeout: 5000
+  host: localhost
+  username: pguser
+  password: dupa
 
 development:
   <<: *default
