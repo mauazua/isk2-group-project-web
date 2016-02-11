@@ -1,5 +1,7 @@
 <h1 class="text-center text-uppercase"> Wyjazdy </h1>
 
+<p class="text-right"><%= link_to 'Wyloguj', destroy_user_session_path, :method => :delete  %></p>
+<p class="text-left"><%= link_to 'Moje rezerwacje', bookings_path, :method => :get  %></p>
 <% if @events.any? %>
   <table class="table">
     <tr>

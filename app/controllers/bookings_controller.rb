@@ -25,10 +25,25 @@ class BookingsController < ApplicationController
     end
   end
 
+  def show
+    if params[:event_id]
+      @bookings = Booking.where(event_id: @event.id).all
+    else
+      @bookings = Booking.all
+    end
+
+  end
+
+  def index
+    @bookings = Booking.where(user_id: current_user.id).includes([:event])
+  end
+
   protected
 
   def find_event
+    return unless params[:event_id]
     @event = Event.find(params[:event_id])
   end
+
 
 end
