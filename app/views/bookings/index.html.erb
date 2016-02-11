@@ -1,0 +1,34 @@
+<h1 class="text-center text-uppercase"> Jestes zapisany na: </h1>
+<p class="text-right"><%= link_to 'Wyloguj', destroy_user_session_path, :method => :delete  %></p>
+
+
+<% if @bookings.any? %>
+  <table class="table">
+    <tr>
+      <th>
+        <%= "Nazwa wycieczki" %>
+      </th>
+      <th>
+        <%= "Data wyjazdu" %>
+      </th>
+      <th>
+        <%= "Numer rezerwacji" %>
+      </th>
+    </tr>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td>
+          <%= booking.event.name %>
+        </td>
+        <td>
+          <%= booking.event.start_date.strftime("%d-%m-%Y") %>
+        </td>
+        <td>
+          <%= booking.id %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h3 class="text-center"> Nie posiadasz rezerwacji </h3>
+<% end %>
