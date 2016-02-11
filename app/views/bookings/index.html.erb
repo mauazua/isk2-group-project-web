@@ -14,6 +14,9 @@
       <th>
         <%= "Numer rezerwacji" %>
       </th>
+      <th>
+        <%= "Zatwierdzona przez admina" %>
+      </th>
     </tr>
     <% @bookings.each do |booking| %>
       <tr>
@@ -25,6 +28,9 @@
         </td>
         <td>
           <%= booking.id %>
+        </td>
+        <td>
+          <%= booking.confirmed? %>
         </td>
       </tr>
     <% end %>
