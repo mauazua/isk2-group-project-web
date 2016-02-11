@@ -10,6 +10,7 @@ default: &default
   pool: 5
   timeout: 5000
 
+
 development:
   <<: *default
   database: isk_development
