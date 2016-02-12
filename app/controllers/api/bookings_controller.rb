@@ -1,5 +1,5 @@
 class Api::BookingsController < BaseApiController
-  before_action :set_event
+  before_action :set_event, only: :index
 
     def index
       if params[:event_id]
@@ -38,7 +38,6 @@ class Api::BookingsController < BaseApiController
   protected
 
   def set_event
-    return unless params[:event_id]
     @event = Event.find(params[:event_id])
   end
 end
