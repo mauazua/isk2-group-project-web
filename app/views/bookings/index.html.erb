@@ -30,7 +30,7 @@
           <%= booking.id %>
         </td>
         <td>
-          <%= booking.confirmed? %>
+          <%= booking.confirmed? ? 'Tak' : 'Nie' %>
         </td>
       </tr>
     <% end %>
