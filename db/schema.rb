@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160213012658) do
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id"
     t.integer "event_id"
+    t.boolean "confirmed", default: false
   end
 
   create_table "events", force: :cascade do |t|

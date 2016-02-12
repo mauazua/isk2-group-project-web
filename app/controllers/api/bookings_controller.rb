@@ -14,7 +14,7 @@ class Api::BookingsController < BaseApiController
 
 
   def destroy
-    @booking = Booking.find(params[:id])
+    @booking = Booking.find_by(id: params[:id])
 
     if @booking.present?
       @booking.destroy
@@ -25,14 +25,13 @@ class Api::BookingsController < BaseApiController
   end
 
   def update
-    @booking = Booking.find(params[:id])
-     if @booking.present?
-       @booking.update_attribute(:confirmed,true)
-       render json: "Accepted"
-     else
-       render json: "Booking not found"
-
-    end
+    @booking = Booking.find_by(id: params[:id])
+      if @booking.present?
+        @booking.update_attribute(:confirmed, true)
+        render json: "Accepted"
+      else
+        render json: "Booking not found"
+      end
 
   end
 
