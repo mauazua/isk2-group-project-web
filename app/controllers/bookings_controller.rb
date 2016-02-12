@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 
-  before_action :find_event
+  before_action :find_event, except: :index
   before_action :authenticate_user!
 
   def destroy
@@ -25,10 +25,24 @@ class BookingsController < ApplicationController
     end
   end
 
+  def show
+    if params[:event_id]
+      @bookings = Booking.where(event_id: @event.id).all
+    else
+      @bookings = Booking.all
+    end
+
+  end
+
+  def index
+    @bookings = Booking.where(user_id: current_user.id).includes([:event])
+  end
+
   protected
 
   def find_event
     @event = Event.find(params[:event_id])
   end
+
 
 end
