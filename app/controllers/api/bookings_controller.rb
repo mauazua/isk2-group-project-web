@@ -1,9 +1,8 @@
 class Api::BookingsController < BaseApiController
-  before_action :set_event, only: :index
 
     def index
       if params[:event_id]
-        @bookings = Booking.where(event_id: @event.id).all
+        @bookings = Booking.where(event_id: params[:event_id]).all
       else
         @bookings = Booking.all
       end
@@ -33,11 +32,5 @@ class Api::BookingsController < BaseApiController
         render json: "Booking not found"
       end
 
-  end
-
-  protected
-
-  def set_event
-    @event = Event.find(params[:event_id])
   end
 end
