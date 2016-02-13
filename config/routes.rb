@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   root to: "events#index"
 
+
   namespace :api do
+    resources :users
     resources :events
     resources :bookings
   end
