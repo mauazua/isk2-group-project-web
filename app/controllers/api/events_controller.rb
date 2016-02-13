@@ -13,7 +13,9 @@ class Api::EventsController < BaseApiController
     @event = Event.new(event_params)
 
     if @event.save
-      respond_with(:api, @event)
+      render json: "Added correctly"
+    else
+      render json: "Error - check date/data type"
     end
   end
 
