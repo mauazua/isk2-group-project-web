@@ -19,4 +19,8 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def self.future
+    where('start_date > ?', Date.today)
+  end
+
 end
