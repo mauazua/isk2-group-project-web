@@ -1,10 +1,6 @@
 class Api::EventsController < BaseApiController
   def index
-    if params[:ongoing] == "true"
-      @events = Event.future
-    else
-      @events = Event.all
-    end
+    @events = Event.all
     render json: @events
   end
 

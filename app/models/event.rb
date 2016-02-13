@@ -1,9 +1,5 @@
 class Event < ActiveRecord::Base
   validates :name, :start_date, :end_date, :location, :country, :price, :capacity, presence: true
-  validates :price, numericality: { :greater_than => 0 }
-  validate :end_after_start
-  validate :start_not_in_past
-
   has_many :bookings
   has_many :users, :through => :bookings
 
@@ -22,5 +18,4 @@ class Event < ActiveRecord::Base
   def self.future
     where('start_date > ?', Date.today)
   end
-
 end
