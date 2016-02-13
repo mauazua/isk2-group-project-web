@@ -6,7 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.datetime :end_date
       t.string :location
       t.string :country
-      t.decimal :price
+      t.integer :price
       t.integer :capacity
     end
   end
